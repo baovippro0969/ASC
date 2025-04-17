@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "_MasterLayout";
+}
+<style>
+    #logo-container img {
+        width: 70px; /* Điều chỉnh kích thước nhỏ lại */
+        height: auto; /* Giữ tỷ lệ */
+        border-radius: 50%; /* Bo tròn */
+        object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+    }
+
+</style>
+<header>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="/Identity/Account/Login" class="brand-logo">
+                <img class="responsive-img" src="~/images/logo.png" alt="Logo" />
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/Identity/Account/Login">Login 1</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="/Identity/Account/Login">Login</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+        </div>
+    </nav>
+
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2">Automobile Service Center</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Where Quality meets Safety</h5>
+                </div>
+                <div class="row center">
+                    <a href="" id="downloadbutton" class="btn-large waves-effect waves-light teal lighten-1">
+                        Get Started
+                    </a>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="~/images/anh1.jpg" alt="Unsplashed background img 1">
+        </div>
+    </div>
+</header>
+
+
+<main>
+    <div class="row margin-bottom-0px">
+        <div class="col s12 padding-0px">
+            @RenderBody()
+        </div>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <!-- About Us Section -->
+            <div class="col l6 s12">
+                <h5 class="white-text">About Us</h5>
+                <p class="grey-text text-lighten-4">
+                    Automobile Service Center is certified to perform car services. Our workshop operations started in October 2010.
+                    We primarily focus on providing better services to our customers, and as a result of the hard work, we were awarded "Best Service" for 2008.
+                </p>
+            </div>
+
+            <!-- Additional Services Section -->
+            <div class="col l3 s12">
+                <h5 class="white-text">Additional Services</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Services</a></li>
+                    <li><a class="white-text" href="#!">Finance</a></li>
+                    <li><a class="white-text" href="#!">Used Cars</a></li>
+                    <li><a class="white-text" href="#!">Insurance</a></li>
+                    <li><a class="white-text" href="#!">Driving School</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Facebook</a></li>
+                    <li><a class="white-text" href="#!">LinkedIn</a></li>
+                    <li><a class="white-text" href="#!">Twitter</a></li>
+                    <li><a class="white-text" href="#!">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Copyright -->
+    <div class="footer-copyright">
+        <div class="container">
+            Powered by
+            <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
+    </div>
+</footer>
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+}

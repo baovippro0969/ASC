@@ -1,0 +1,35 @@
+﻿@page
+@model ExternalLoginModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <p class="txt-info">
+                    You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
+                    Please click the Register button to finish
+                    logging in.
+                </p>
+                <div class="row input-field col s12">
+                    <input asp-for="Input.Email" type="email" readonly>
+                    <label asp-for="Input.Email">Email</label>
+                </div>
+                <div class="row center">
+                    <button type="submit" class="btn waves-effect waves-light">
+                        Register
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Http
+@using ASC.Utilities
+@using ASC.WEB.Data
+@inject IHttpContextAccessor UserHttpContext
+@inject INavigationCacheOperations navigationCache
+
+@{
+    Layout = "_MasterLayout";
+    var currentUser = UserHttpContext.HttpContext.User.GetCurrentUserDetails();
+}
+
+<header class="secureLayout">
+    <nav class="top-nav blue-grey lighten-1">
+        <div class="nav-wrapper row valign-wrapper">
+            <div class="col s12 valign-wrapper">
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <h5><a class="page-title">Automobile Service Center</a></h5>
+            </div>
+        </div>
+    </nav>
+
+    <ul id="nav-mobile" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background blue-grey lighten-1"></div>
+                <a href="#!user"><img class="circle" src="/images/Avata1.jpg"></a>
+                <a href="#!name"><span class="white-text name">@currentUser.Name</span></a>
+                <a href="#!email"><span class="white-text email">@currentUser.Email</span></a>
+            </div>
+        </li>
+        @await Component.InvokeAsync("ASC.Web.Navigation.LeftNavigation", await navigationCache.GetNavigationCacheAsync())
+    </ul>
+</header>
+
+<main class="secureLayout">
+    <div class="row margin-bottom-8px">
+        <div class="col s12">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <!-- About Us Section -->
+                <div class="col l6 s12">
+                    <h5 class="white-text">About Us</h5>
+                    <p class="grey-text text-lighten-4">
+                        Automobile Service Center is certified to perform car services. Our workshop operations started in October 2010.
+                        We primarily focus on providing better services to our customers, and as a result of the hard work, we were awarded "Best Service" for 2008.
+                    </p>
+                </div>
+
+                <!-- Additional Services Section -->
+                <div class="col l3 s12">
+                    <h5 class="white-text">Additional Services</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Services</a></li>
+                        <li><a class="white-text" href="#!">Finance</a></li>
+                        <li><a class="white-text" href="#!">Used Cars</a></li>
+                        <li><a class="white-text" href="#!">Insurance</a></li>
+                        <li><a class="white-text" href="#!">Driving School</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Section -->
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Facebook</a></li>
+                        <li><a class="white-text" href="#!">LinkedIn</a></li>
+                        <li><a class="white-text" href="#!">Twitter</a></li>
+                        <li><a class="white-text" href="#!">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Copyright -->
+        <div class="footer-copyright">
+            <div class="container">
+                Powered by
+                <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+
+    <form class="hide" method="post" id="logout_form" asp-area="Identity" asp-page="/Account/Logout">
+        <input type="submit" value="Logout" />
+    </form>
+
+    <form class="hide" method="post" id="resetPassword_form" asp-area="Identity" asp-page="/Account/InitiateResetPassword">
+    </form>
+</main>
+
+<style>
+    .page-footer {
+        margin-left: 1000px;
+    }
+</style>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            $('#ancrLogout').click(function () {
+                $('#logout_form').submit();
+            });
+            $('#ancrResetPassword').click(function () {
+                $('#resetPassword_form').submit();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
+    </script>
+}
